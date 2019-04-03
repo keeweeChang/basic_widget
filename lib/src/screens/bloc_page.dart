@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../blocs/count_provider.dart';
 
 class BlocPage extends StatelessWidget {
-  BlocPage({Key key, this.title}) : super(key: key);
-  final String title;
+  BlocPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +12,6 @@ class BlocPage extends StatelessWidget {
 
   Widget _buildpage(CountBloc bloc) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

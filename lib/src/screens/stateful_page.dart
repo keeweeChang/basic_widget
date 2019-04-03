@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 class StatefulPage extends StatefulWidget {
-  StatefulPage({Key key, this.title}) : super(key: key);
-  final String title;
+  StatefulPage({Key key}) : super(key: key);
 
   @override
   _StatefulPageState createState() => _StatefulPageState();
@@ -21,9 +19,6 @@ class _StatefulPageState extends State<StatefulPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +37,7 @@ class _StatefulPageState extends State<StatefulPage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ), 
+      ),
     );
   }
 }

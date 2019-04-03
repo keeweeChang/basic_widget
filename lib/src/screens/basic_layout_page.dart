@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
 class BasicLayoutPage extends StatelessWidget {
-  String title;
-  BasicLayoutPage({this.title});
+  BasicLayoutPage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

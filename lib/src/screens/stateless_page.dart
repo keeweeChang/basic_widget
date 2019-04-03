@@ -1,16 +1,11 @@
-
 import 'package:flutter/material.dart';
 
 class StatelessPage extends StatelessWidget {
-  StatelessPage({Key key, this.title}) : super(key: key);
-  final String title;
+  StatelessPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -29,8 +24,7 @@ class StatelessPage extends StatelessWidget {
         onPressed: () => print("hello"),
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ), 
+      ),
     );
   }
 }
-

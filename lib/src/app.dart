@@ -5,25 +5,71 @@ import 'screens/bloc_page.dart';
 import 'screens/stateless_page.dart';
 import 'screens/basic_layout_page.dart';
 
-class App extends StatelessWidget {
-  // This widget is the root of your application.
+class App extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return AppState();
+  }
+}
+
+class AppState extends State<App> with SingleTickerProviderStateMixin {
+  TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TabController(length: 4, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     final title = 'Flutter Demo Home Page';
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+          bottom: _buildTabBar(),
         ),
-        // home: Text(title),
-        home: BasicLayoutPage(title: title)
-        // home: StatelessPage(title: title),
-        // home: StatefulPage(title: title),
-        // home: CountProvider(
-        //   child: BlocPage(
-        //     title: title,
-        //   ),
-        // ),
-        );
+        body: _buildTabBarView(),
+      ),
+    );
+  }
+
+  Widget _buildTabBar() {
+    return TabBar(
+      tabs: <Widget>[
+        _buildBarItem("Basic"),
+        _buildBarItem("Stateless"),
+        _buildBarItem("Stateful"),
+        _buildBarItem("Bloc"),
+      ],
+      controller: controller,
+    );
+  }
+
+  Widget _buildBarItem(String title) {
+    return Padding(
+      padding: EdgeInsets.only(top: 10, bottom: 10),
+      child: Text(
+        title,
+        style: TextStyle(fontSize: 15),
+      ),
+    );
+  }
+
+  Widget _buildTabBarView() {
+    return TabBarView(
+      children: <Widget>[
+        BasicLayoutPage(),
+        StatelessPage(),
+        StatefulPage(),
+        CountProvider(child: BlocPage()),
+      ],
+      controller: controller,
+    );
   }
 }
